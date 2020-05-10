@@ -15,6 +15,17 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    var name = ""
+    @IBAction func registerClicked(_ sender: Any) {
+        name = nameText.text!
+        performSegue(withIdentifier: "toSecondVC", sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSecondVC"{
+            let destinationVC = segue.destination as! SecondViewController
+            destinationVC.nameString = name
+        }
+    }
+    @IBOutlet weak var nameText: UITextField!
 }
 
